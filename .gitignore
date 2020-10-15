@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-
+todo.txt
+workflow.txt
 
 # local env files
 .env.local

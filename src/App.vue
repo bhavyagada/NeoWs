@@ -1,8 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <ul>
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/asteroids">Asteroids</router-link></li>
+        <li><router-link to="/signup">Signup</router-link></li>
+        <li><router-link to="/login">Login</router-link></li>
+      </ul>
     </div>
     <router-view/>
   </div>
@@ -14,19 +18,49 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #012;
+  text-transform: uppercase;
 }
 
 #nav {
-  padding: 30px;
+  height: 100%;
+  display: flex;
+  background-color: aquamarine;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+#nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+#nav li {
+  text-align: center;
+  flex: 1;
+  line-height: 1.6em;
+  font-size: 1.2em;
+  list-style-type: none;
+  padding: 0.5em;
+  display: inline;
 }
 
 #nav a {
+  text-decoration: none;
+  color: #20f;
+  overflow-wrap: break-word;
   font-weight: bold;
-  color: #2c3e50;
+  font-family: monospace;
+	font-size:30px;
+  text-transform: uppercase;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+#nav a:visited {
+    color: #607;
+}
+
+#nav a:hover {
+    text-decoration: underline;
 }
 </style>
