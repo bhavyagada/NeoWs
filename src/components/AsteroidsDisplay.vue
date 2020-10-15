@@ -14,8 +14,10 @@
         <td><a :href=asteroid.nasa_jpl_url target="_blank">Detailed Information</a></td>
       </tr>
     </table>
+    <button v-if="isLoading === true" @click="prevPage">Previous Page</button>
     <button v-if="isLoading === true" @click="showLessAsteroids = !showLessAsteroids">
       {{showLessAsteroids===true? "Show All Asteroids" : "Show Less"}}</button>
+    <button v-if="isLoading === true" @click="nextPage">Next Page</button>
   </div>
 </template>
 
@@ -29,7 +31,8 @@ export default {
       asteroids: [],
       errors: [],
       showLessAsteroids: true,
-      isLoading: false
+      isLoading: false,
+      currentPage: 0
     }
   },
   computed: {
@@ -42,8 +45,8 @@ export default {
     }
   },
   mounted() {
-    const baseURI = 'https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=5g9iDC6teJ9Ulwm9cgCBcZ65SAfuU71QeZOnBn1l'
-
+    let baseURI = "https://api.nasa.gov/neo/rest/v1/neo/browse?page="+this.currentPage+"&size=20&api_key=5g9iDC6teJ9Ulwm9cgCBcZ65SAfuU71QeZOnBn1l"
+    
     axios.get(baseURI).then((result) => {
       this.isLoading = true
       this.asteroids = result.data
@@ -51,6 +54,36 @@ export default {
       this.errors.push(e)
       this.isLoading = false
     })
+  },
+  methods: {
+    prevPage() {
+      if (this.currentPage === 0) {
+        axios.get("https://api.nasa.gov/neo/rest/v1/neo/browse?page="+this.currentPage+"&size=20&api_key=5g9iDC6teJ9Ulwm9cgCBcZ65SAfuU71QeZOnBn1l").then((result) => {
+          this.isLoading = true
+          this.asteroids = result.data
+        }).catch(e => {
+          this.errors.push(e)
+          this.isLoading = false
+        })
+      } else {
+        axios.get("https://api.nasa.gov/neo/rest/v1/neo/browse?page="+(this.currentPage-=1)+"&size=20&api_key=5g9iDC6teJ9Ulwm9cgCBcZ65SAfuU71QeZOnBn1l").then((result) => {
+          this.isLoading = true
+          this.asteroids = result.data
+        }).catch(e => {
+          this.errors.push(e)
+          this.isLoading = false
+        })
+      }
+    },
+    nextPage() {
+      axios.get("https://api.nasa.gov/neo/rest/v1/neo/browse?page="+(this.currentPage+=1)+"&size=20&api_key=5g9iDC6teJ9Ulwm9cgCBcZ65SAfuU71QeZOnBn1l").then((result) => {
+        this.isLoading = true
+        this.asteroids = result.data
+      }).catch(e => {
+        this.errors.push(e)
+        this.isLoading = false
+      })
+    }
   }
 }
 </script>
@@ -90,7 +123,7 @@ button {
 	color: #fff;
   font-weight: bold;
   font-size: 1.2em;
-  margin-top: 0.5em;
+  margin: 0.5em 2em 0.5em 2em;
   font-style: normal;
 }
 </style>
