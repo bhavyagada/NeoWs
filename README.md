@@ -1,4 +1,5 @@
-# scribeless-test
+# NeoWs
+Simple Web App for NeoWs API using Vue.js and Firebase
 
 ## Project setup
 ```
