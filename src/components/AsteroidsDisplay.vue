@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1><u>List of Asteroids</u></h1>
     <table v-if="isLoading === true">
       <tr>
         <th>ID</th>
@@ -89,6 +90,12 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  margin: 40px 0 0;
+  line-height: 1em;
+  padding: 1em;
+}
+
 table {
   width: 100%;
   height: 320px;
@@ -122,7 +129,6 @@ button {
 	background: #000;
 	color: #fff;
   font-weight: bold;
-  font-size: 1.2em;
   margin: 0.5em 2em 0.5em 2em;
   font-style: normal;
 }
