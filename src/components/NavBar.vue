@@ -1,16 +1,17 @@
 <template>
   <div>
-    <div id="nav">
-      <ul>
-        <li v-if="isLoggedIn"><span class="email">{{ currentUser }}</span></li>
-        <li v-if="isLoggedIn === true"><router-link to="/">Favourites</router-link></li>
-        <li v-if="isLoggedIn === true"><router-link to="/asteroids">Asteroids</router-link></li>
-        <li v-if="isLoggedIn === true"><router-link to="/filters">Filters</router-link></li>
-        <li v-if="isLoggedIn === false"><router-link to="/signup">Signup</router-link></li>
-        <li v-if="isLoggedIn === false"><router-link to="/login">Login</router-link></li>
-        <li v-if="isLoggedIn === true"><button @click="logout">Logout</button></li>
-      </ul>
-    </div>
+      <v-app-bar app color="primary" dark height="75" d-flex>
+        <v-toolbar-title>NeoWs API Web Service</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <h2 v-if="isLoggedIn"><span>{{ currentUser }}</span></h2>
+        <v-spacer></v-spacer>
+        <v-btn text x-large  to="/" v-if="isLoggedIn === true"><span class="mr-2">Favourites</span></v-btn>
+        <v-btn text x-large  to="/asteroids" v-if="isLoggedIn === true"><span class="mr-2">Asteroids</span></v-btn>
+        <v-btn text x-large  to="/filters" v-if="isLoggedIn === true"><span class="mr-2">Filters</span></v-btn>
+        <v-btn text x-large  to="/signup" v-if="isLoggedIn === false"><span class="mr-2"><v-icon>mdi-login-variant</v-icon>Signup</span></v-btn>
+        <v-btn text x-large to="/login" v-if="isLoggedIn === false"><span class="mr-2"><v-icon>mdi-login-variant</v-icon>Login</span></v-btn>
+        <v-btn text x-large rounded dark v-if="isLoggedIn === true" @click="logout"><span class="mr-2"><v-icon>mdi-logout-variant</v-icon>Logout</span></v-btn>
+      </v-app-bar>
     <router-view/>
   </div>
 </template>
@@ -43,58 +44,8 @@ export default {
 </script>
 
 <style scoped>
-.email {
-    padding: 15px;
-}
-
-#nav {
-  height: 100%;
-  display: flex;
-  background-color: aquamarine;
-  padding: 0.5em;
-  margin: 0.5em;
-}
-
-#nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1;
-}
-
-#nav li {
-  text-align: center;
-  flex: 1;
-  line-height: 1.6em;
-  font-size: 1.2em;
-  list-style-type: none;
-  padding: 0.5em;
-  display: inline;
-}
-
-#nav a {
-  text-decoration: none;
-  color: #20f;
-  overflow-wrap: break-word;
-  font-weight: bold;
-  font-family: monospace;
-	font-size:30px;
-  text-transform: uppercase;
-}
-
-#nav a:visited {
-    color: #607;
-}
-
-#nav a:hover {
-    text-decoration: underline;
-}
-
 button {
-  padding: 0.5em 0.7em;
-  font-size: 1em;
   background: #000;
   color: #fff;
-  font-weight: bold;
-  font-style: normal;
 }
 </style>

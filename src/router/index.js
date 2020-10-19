@@ -4,7 +4,7 @@ import Home from '../views/Home.vue';
 import Asteroids from '@/components/AsteroidsDisplay';
 import Login from '@/components/Login';
 import Register from '@/components/Register';
-import AsteroidFilter from '@/components/IdFilter'
+import AsteroidFilter from '@/components/IdDateFilter'
 import firebase from '../components/firebaseConfig'
 
 Vue.use(VueRouter)

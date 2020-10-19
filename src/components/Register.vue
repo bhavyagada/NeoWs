@@ -1,14 +1,14 @@
 <template>
-  <div class="container">
-    <h1><u>Register</u></h1>
+  <v-container class="text-center mb-4">
+    <h1 class="display-2 font-weight-bold mb-3">Registration</h1>
     <form class="inlineform">
       <label for="email">Email</label><br>
       <input type="email" id="email" v-model="email" required><br>
       <label for="password">Password</label><br>
       <input type="password" id="password" v-model="password" required><br>
-      <button @click="register">Register</button>
+      <v-btn x-large class="ma-2" color="primary" elevation="5" @click="register"><span>Register</span></v-btn>
     </form>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -45,18 +45,7 @@ export default {
 <style scoped>
 h1 {
   margin: 40px 0 0;
-  line-height: 1em;
   padding: 1em;
-}
-
-button {
-  padding: 0.5em 0.6em;
-  font-size: 1.2em;
-  background: #000;
-  color: #fff;
-  font-weight: bold;
-  margin: 0.5em 2em 0.5em 2em;
-  font-style: normal;
 }
 
 form {

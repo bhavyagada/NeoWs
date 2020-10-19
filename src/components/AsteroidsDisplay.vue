@@ -1,29 +1,33 @@
 <template>
   <div>
-    <h1><u>List of all Asteroids</u></h1>
-    <form class="inlineform">
-        <label for="asid">Enter ID</label>
-        <input type="number" id="asid" placeholder="Enter Asteroid ID to Mark as Favourite" onfocus="this.value=''">
-        <button @click.prevent="addToFav">Add to Favourites</button>
-    </form>
-    <table v-if="isLoading === true">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Potentially Hazardous</th>
-        <th>URL</th>
-      </tr>
-      <tr v-for="asteroid in asteroidsToDisplay" v-bind:key="asteroid.id">
-        <td>{{ asteroid.id }}</td>
-        <td>{{ asteroid.name }}</td>
-        <td>{{ asteroid.is_potentially_hazardous_asteroid }}</td>
-        <td><a :href=asteroid.nasa_jpl_url target="_blank">Detailed Information</a></td>
-      </tr>
-    </table>
-    <button v-if="isLoading === true" @click.prevent="prevPage">Previous Page</button>
-    <button v-if="isLoading === true" @click.prevent="showLessAsteroids = !showLessAsteroids">
-      {{showLessAsteroids===true? "Show All Asteroids" : "Show Less"}}</button>
-    <button v-if="isLoading === true" @click.prevent="nextPage">Next Page</button>
+    <v-container class="text-center mb-4">
+      <v-container class="mb-4">
+        <h1 class="display-2 font-weight-bold">List of all Asteroids</h1>
+        <form class="inlineform">
+          <label for="asid">Enter ID</label>
+          <input type="number" id="asid" placeholder="Enter Asteroid ID to Mark as Favourite" onfocus="this.value=''">
+          <v-btn x-large color="primary" @click.prevent="addToFav"><v-icon>mdi-pen-plus</v-icon>Add to Favourites</v-btn>
+        </form>
+      </v-container>
+      <v-simple-table v-if="isLoading === true">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Potentially Hazardous</th>
+          <th>URL</th>
+        </tr>
+        <tr v-for="asteroid in asteroidsToDisplay" v-bind:key="asteroid.id">
+          <td>{{ asteroid.id }}</td>
+          <td>{{ asteroid.name }}</td>
+          <td>{{ asteroid.is_potentially_hazardous_asteroid }}</td>
+          <td><a :href=asteroid.nasa_jpl_url target="_blank">Detailed Information</a></td>
+        </tr>
+      </v-simple-table>
+      <v-btn x-large rounded dark elevation="7" v-if="isLoading === true" @click.prevent="prevPage">Previous Page</v-btn>
+      <v-btn x-large rounded dark elevation="7" v-if="isLoading === true" @click.prevent="showLessAsteroids = !showLessAsteroids">
+        {{showLessAsteroids===true? "Show All Asteroids" : "Show Less"}}</v-btn>
+      <v-btn x-large rounded dark elevation="7" v-if="isLoading === true" @click.prevent="nextPage">Next Page</v-btn>
+    </v-container>
   </div>
 </template>
 
@@ -127,45 +131,33 @@ export default {
 <style scoped>
 h1 {
   margin: 40px 0 0;
-  line-height: 1em;
-  padding: 1em;
-}
-
-table {
-  width: 100%;
-  height: 320px;
-  border-collapse: collapse;
-  border: 1px solid #38678f;
-  margin: auto;
-  background: white;
+  padding: 0.5em;
 }
 
 td, th {
   padding: 0.5em;
   border: 1px solid black;
   display: table-cell;
+  text-transform: uppercase;
 }
 
 th {
-  background: rgb(37, 37, 47);
+  background: black;
   color: white;
   border: 1px solid white;
 }
 
 tr {
-    padding: 0.5em;
-    font-weight: bold;
-    display: table-row;
+  padding: 0.5em;
+  font-weight: bold;
+  display: table-row;
+  text-transform: uppercase;
 }
 
 button {
 	padding: 0.5em 0.6em;
 	font-size: 1.2em;
-	background: #000;
-	color: #fff;
-  font-weight: bold;
   margin: 0.5em 2em 0.5em 2em;
-  font-style: normal;
 }
 
 form {
@@ -202,6 +194,6 @@ form.inlineform input {
 
 label {
   margin: 0.5em 0 0.2em;
-  font-size: 1.5em;
+  font-size: 1.75em;
 }
 </style>

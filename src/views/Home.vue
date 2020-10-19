@@ -1,8 +1,7 @@
 <template>
-  <div class="home">
-    <h1><u>Your Favourite Asteroids</u></h1>
+  <v-container class="text-center">
     <Favourites />
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -15,11 +14,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-h1 {
-  margin: 40px 0 0;
-  line-height: 1em;
-  padding: 1em;
-}
-</style>

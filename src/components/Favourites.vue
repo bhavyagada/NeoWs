@@ -1,13 +1,16 @@
 <template>
   <div>
-    <div>
-      <form class="inlineform">
-        <label for="asid">Enter ID</label>
-        <input type="number" id="asid" placeholder="Enter Asteroid ID to Remove From Favourites" onfocus="this.value=''">
-        <button @click.prevent="removeFavs" @click="window.location.reload();">Remove from Favourites</button>
-      </form>
-      <table v-if="isLoading === true && isEmpty === false"></table>
-      <table>
+    <v-container class="text-center mb-4">
+      <v-container class="mb-4">
+        <h1 class="display-2 font-weight-bold">Your Favourite Asteroids</h1>
+        <form class="inlineform">
+          <label for="asid">Enter ID</label>
+          <input type="number" id="asid" placeholder="Enter Asteroid ID to Remove From Favourites" onfocus="this.value=''">
+          <v-btn x-large color="primary" @click.prevent="removeFavs"><v-icon>mdi-pen-remove</v-icon>Remove from Favourites</v-btn>
+        </form>
+      </v-container>
+      <v-simple-table v-if="isLoading === true && isEmpty === false"></v-simple-table>
+      <v-simple-table fixed-header height="300">
         <tr>
           <th>ID</th>
           <th>Name</th>
@@ -20,9 +23,9 @@
           <td>{{ asteroid.is_potentially_hazardous_asteroid }}</td>
           <td><a :href=asteroid.nasa_jpl_url target="_blank">Detailed Information</a></td>
         </tr>
-      </table>
+      </v-simple-table>
       <h2 v-if="isEmpty === true">Your Favourites List is Empty! Go to <a href="/asteroids">Asteroids</a> to add some.</h2>
-    </div>
+    </v-container>
   </div>
 </template>
 
@@ -109,23 +112,26 @@ export default {
 </script>
 
 <style scoped>
-table {
-  width: 100%;
-  height: 320px;
-  border-collapse: collapse;
-  border: 1px solid #38678f;
-  margin: auto;
-  background: white;
+h1 {
+  margin: 40px 0 0;
+  padding: 0.5em;
+}
+
+button {
+  padding: 0.5em 0.6em;
+  font-size: 1.2em;
+  margin: 0.5em 2em 0.5em 2em;
 }
 
 td, th {
   padding: 0.5em;
   border: 1px solid black;
   display: table-cell;
+  text-transform: uppercase;
 }
 
 th {
-  background: rgb(37, 37, 47);
+  background: black;
   color: white;
   border: 1px solid white;
 }
@@ -134,16 +140,7 @@ tr {
   padding: 0.5em;
   font-weight: bold;
   display: table-row;
-}
-
-button {
-  padding: 0.5em 0.6em;
-  font-size: 1.2em;
-  background: #000;
-  color: #fff;
-  font-weight: bold;
-  margin: 0.5em 2em 0.5em 2em;
-  font-style: normal;
+  text-transform: uppercase;
 }
 
 form {
@@ -180,6 +177,6 @@ form.inlineform input {
 
 label {
   margin: 0.5em 0 0.2em;
-  font-size: 1.5em;
+  font-size: 1.75em;
 }
 </style>
