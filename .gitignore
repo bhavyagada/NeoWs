@@ -1,8 +1,9 @@
 .DS_Store
 node_modules
 /dist
-todo.txt
-workflow.txt
+/.firebase
+firebase.json
+.firebaserc
 
 # local env files
 .env.local
