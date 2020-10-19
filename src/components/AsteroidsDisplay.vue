@@ -114,15 +114,11 @@ export default {
         asteroid_ids: fb.firestore.FieldValue.arrayUnion(parseInt(asteroidid))
       }).then(function() {
           console.log("Successfully Added to Favourite!");
+          window.location.reload()
       })
       .catch(function(error) {
           console.error("An Error Occured: ", error);
       });
-
-      this.reloadPage()
-    },
-    reloadPage(){
-      window.location.reload()
     }
   }
 }

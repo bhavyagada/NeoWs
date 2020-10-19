@@ -96,15 +96,12 @@ export default {
       db.collection('users').doc(this.currentUser).update({
         asteroid_ids: fb.firestore.FieldValue.arrayRemove(parseInt(asteroidid))
       }).then(function() {
-        console.log("Successfully Added to Favourite!");
+        console.log("Successfully Removed from Favourite!");
+        window.location.reload()
       })
       .catch(function(error) {
         console.error("An Error Occured: ", error);
       });
-      this.reloadPage()
-    },
-    reloadPage(){
-      window.location.reload()
     }
   }
 }
