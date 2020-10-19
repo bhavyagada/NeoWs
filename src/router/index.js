@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import Asteroids from '@/components/AsteroidsDisplay';
 import Login from '@/components/Login';
 import Register from '@/components/Register';
+import AsteroidFilter from '@/components/IdFilter'
 import firebase from '../components/firebaseConfig'
 
 Vue.use(VueRouter)
@@ -21,6 +22,14 @@ const routes = [
     path: '/asteroids',
     name: 'Asteroids',
     component: Asteroids,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/filters',
+    name: 'Filters',
+    component: AsteroidFilter,
     meta: {
       requiresAuth: true
     }

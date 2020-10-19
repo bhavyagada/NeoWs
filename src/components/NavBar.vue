@@ -3,8 +3,9 @@
     <div id="nav">
       <ul>
         <li v-if="isLoggedIn"><span class="email">{{ currentUser }}</span></li>
-        <li v-if="isLoggedIn === true"><router-link to="/">Home</router-link></li>
+        <li v-if="isLoggedIn === true"><router-link to="/">Favourites</router-link></li>
         <li v-if="isLoggedIn === true"><router-link to="/asteroids">Asteroids</router-link></li>
+        <li v-if="isLoggedIn === true"><router-link to="/filters">Filters</router-link></li>
         <li v-if="isLoggedIn === false"><router-link to="/signup">Signup</router-link></li>
         <li v-if="isLoggedIn === false"><router-link to="/login">Login</router-link></li>
         <li v-if="isLoggedIn === true"><button @click="logout">Logout</button></li>
