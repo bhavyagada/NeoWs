@@ -1,5 +1,5 @@
 # NeoWs
-Simple Web App for NeoWs API using Vue.js and Firebase
+Simple Web App for NeoWs API using **[Vue.js](https://vuejs.org/), [Vuetify](https://vuetifyjs.com/en/) and [Firebase](https://firebase.google.com/)**
 
 ## Project setup
 ```
