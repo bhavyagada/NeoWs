@@ -1,13 +1,18 @@
 <template>
   <div class="home">
-    <h1><u>Welcome to the world of asteroids</u></h1>
+    <h1><u>Your Favourite Asteroids</u></h1>
+    <Favourites />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import Favourites from '@/components/Favourites.vue'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    Favourites
+  }
 }
 </script>
 

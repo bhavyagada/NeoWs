@@ -24,8 +24,13 @@ export default {
   },
   methods: {
     register(e) {
+      const db = firebase.firestore()
+
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(user => {
         console.log(`Account created for ${user.user.email}`);
+        db.collection('users').doc(user.user.uid).set({
+          asteroid_ids: []
+        })
         this.$router.push('/login');
       }).catch(err => {
           console.log(err.message);
