@@ -9,8 +9,7 @@
           <v-btn x-large color="primary" @click.prevent="removeFavs"><v-icon>mdi-pen-remove</v-icon>Remove from Favourites</v-btn>
         </form>
       </v-container>
-      <v-simple-table v-if="isLoading === true && isEmpty === false"></v-simple-table>
-      <v-simple-table fixed-header height="300">
+      <v-simple-table fixed-header height="300" v-if="isLoading === true && isEmpty === false">
         <tr>
           <th>ID</th>
           <th>Name</th>

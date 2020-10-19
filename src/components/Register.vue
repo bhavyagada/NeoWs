@@ -30,8 +30,9 @@ export default {
         console.log(`Account created for ${user.user.email}`);
         db.collection('users').doc(user.user.uid).set({
           asteroid_ids: []
+        }).then(() => {
+          this.$router.go({path: this.$router.path});
         })
-        this.$router.push('/login');
       }).catch(err => {
           console.log(err.message);
       });
